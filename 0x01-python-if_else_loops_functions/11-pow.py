@@ -2,7 +2,7 @@
 def pow(a, b):
     if b == 0:
         return(1)
-    elif b < 0:
+    elif b < 0 or b < 0 and a < 0:
         b = b * -1
         for y in range(1, b):
             a = a * a
