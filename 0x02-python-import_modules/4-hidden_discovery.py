@@ -2,5 +2,5 @@
 import hidden_4
 if __name__ == "__main__":
     for x in dir(hidden_4):
-        if x[0:2] != "__":
+        if(x.find('__') == -1):
             print(x)
