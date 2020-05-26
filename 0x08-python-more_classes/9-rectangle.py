@@ -2,7 +2,7 @@
 """ This module creates a new class Rectangle"""
 
 
-class Rectangle():
+class Rectangle:
     """Class Rectangle constructor method """
     number_of_instances = 0
     print_symbol = "#"
@@ -20,8 +20,8 @@ class Rectangle():
             return(rect_2)
 
     def __init__(self, width=0, height=0):
-        self.__height = height
-        self.__width = width
+        self.height = height
+        self.width = width
         Rectangle.number_of_instances += 1
 
     @property
