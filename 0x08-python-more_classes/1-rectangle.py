@@ -2,7 +2,7 @@
 """ This module creates a new class Rectangle"""
 
 
-class Rectangle():
+class Rectangle:
     """Class Rectangle constructor method """
 
     def __init__(self, width=0, height=0):
