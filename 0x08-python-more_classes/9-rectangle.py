@@ -66,7 +66,7 @@ class Rectangle:
         else:
             rps = '{self.__class__.__name__}({self.width}, {self.height})\
 '.format(self=self)
-            return (rps)
+            return(rps)
 
     def __del__(self):
         """Delete instance of object"""

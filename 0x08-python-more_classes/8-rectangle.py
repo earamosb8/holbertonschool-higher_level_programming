@@ -7,18 +7,6 @@ class Rectangle():
     number_of_instances = 0
     print_symbol = "#"
 
-    @staticmethod
-    def bigger_or_equal(rect_1, rect_2):
-        """check which is the largest object"""
-        if not isinstance(rect_1, Rectangle):
-            raise TypeError("rect_1 must be an instance of Rectangle")
-        if not isinstance(rect_2, Rectangle):
-            raise TypeError("rect_2 must be an instance of Rectangle")
-        if rect_1.area() >= rect_2.area():
-            return(rect_1)
-        else:
-            return(rect_2)
-
     def __init__(self, width=0, height=0):
         self.height = height
         self.width = width
@@ -84,3 +72,15 @@ class Rectangle():
         """Delete instance of object"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """check which is the largest object"""
+        if isinstance(rect_1, Rectangle) is False:
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if isinstance(rect_2, Rectangle) is False:
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() < rect_2.area():
+            return rect_2
+        else:
+            return rect_1
