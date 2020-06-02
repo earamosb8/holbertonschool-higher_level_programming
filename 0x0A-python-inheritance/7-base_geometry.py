@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is module 6-base_geometry"""
+"""This is module 7-base_geometry"""
 
 
 class BaseGeometry:
