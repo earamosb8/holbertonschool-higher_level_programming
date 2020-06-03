@@ -4,7 +4,7 @@
 
 def read_lines(filename="", nb_lines=0):
     """read a number of the lines of a file"""
-    with open('my_file_0.txt', 'r', encoding="utf-8") as f:
+    with open(filename, 'r', encoding="utf-8") as f:
         if nb_lines <= 0:
             print(f.read(), end="")
         else:
