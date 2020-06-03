@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module for to_json_string"""
 import json
 """This is module 5-to_json_string."""
 
