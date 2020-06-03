@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" this module create the class Mylist"""
+
+
 class MyList(list):
     """class representing a list"""
 
