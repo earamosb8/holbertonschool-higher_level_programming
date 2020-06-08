@@ -115,3 +115,9 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if (hasattr(self, key)):
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        new_dictionary = {}
+        for key, value in self.__dict__.items():
+            new_dictionary[key.split("__")[-1]] = value
+        return new_dictionary
