@@ -28,3 +28,32 @@ class Square(Rectangle):
     def __str__(self):
         return ("[Square] ({:d}) {:d}/{:d} - {:d}\
     ".format(self.id, self.x, self.y, self.width))
+
+    def update(self, *args, **kwargs):
+        l = len(args)
+        if args and l > 0:
+            for arg in args:
+                if type(arg) is not int:
+                    raise ValueError("arg must be integer")
+            if l >= 1:
+                self.id = args[0]
+            if l >= 2:
+                self.size = args[1]
+            if l >= 3:
+                self.x = args[2]
+            if l >= 4:
+                self.y = args[3]
+        else:
+            for key, value in kwargs.items():
+                if (hasattr(self, key)):
+                    setattr(self, key, value)
+
+    def to_dictionary(self):
+        new_dictionary = {}
+        for key, value in self.__dict__.items():
+            if key.split("__")[-1] == "width" or key.split("\
+    __")[-1] == "height":
+                new_dictionary["size"] = value
+            else:
+                new_dictionary[key.split("__")[-1]] = value
+        return new_dictionary

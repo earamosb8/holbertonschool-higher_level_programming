@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import json
 """This is module class base"""
 
 
@@ -11,3 +12,15 @@ class Base:
             self.id = id
         else:
             self.id = Base.__nb_objects = Base.__nb_objects + 1
+
+    def to_json_string(list_dictionaries):
+        if list_dictionaries is None or list_dictionaries == []:
+            return ("[]")
+        return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        tmp_list = [x.to_dictionary() for x in list_objs]
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as my_file:
+            my_file.write(cls.to_json_string(tmp_list))
