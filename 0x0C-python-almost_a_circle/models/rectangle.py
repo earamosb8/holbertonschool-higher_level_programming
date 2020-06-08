@@ -31,7 +31,7 @@ class Rectangle(Base):
         super().__init__(id)
 
     def __str__(self):
-        return ("[Rectangle]({:d}) {:d}/{:d} - {:d}/{:d}\
+        return ("[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}\
     ".format(self.id, self.__y, self.__x, self.__width, self.__height))
 
     @property
@@ -94,3 +94,19 @@ class Rectangle(Base):
             for p in range(0, self.__width):
                 print("#", end="")
             print("")
+
+    def update(self, *args):
+        l = len(args)
+        for arg in args:
+            if type(arg) is not int:
+                raise ValueError("arg must be integer")
+        if l >= 1:
+            self.id = args[0]
+        if l >= 2:
+            self.__width = args[1]
+        if l >= 3:
+            self.__height = args[2]
+        if l >= 4:
+            self.__x = args[3]
+        if l >= 5:
+            self.__y = args[4]
