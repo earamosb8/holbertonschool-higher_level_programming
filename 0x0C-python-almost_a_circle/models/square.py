@@ -29,9 +29,14 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
-        """return s string"""
-        return ("[Square] ({:d}) {:d}/{:d} - {:d}\
-    ".format(self.id, self.x, self.y, self.width))
+        """String magic Returns:
+           string"""
+        id = str(self.id)
+        x = str(self.x)
+        y = str(self.y)
+        size = str(self.width)
+        string = "[Square] (" + id + ") " + x + "/" + y + " - " + size
+        return string
 
     def update(self, *args, **kwargs):
         """update attributes"""
