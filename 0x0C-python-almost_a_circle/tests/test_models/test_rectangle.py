@@ -17,7 +17,7 @@ from models.square import Square
 class TestRectangle(unittest.TestCase):
     """Rectangle test"""
 
-    def setUp(self):
+    def setp(self):
         """setup of unittes"""
         Base._Base__nb_objects = 0
 
@@ -44,3 +44,80 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s2.height, 4)
         self.assertEqual(s2.x, 5)
         self.assertEqual(s2.y, 0)
+
+    def test_1(self):
+        """Test - non integer value"""
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(None, 2)
+        self.assertEqual(
+            "width must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle((24, ), 5)
+        self.assertEqual(
+            "width must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s2 = Rectangle("x", 6)
+        self.assertEqual(
+            "width must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s2 = Rectangle(53.6, 7)
+        self.assertEqual(
+            "width must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle([4, 5], 3)
+        self.assertEqual(
+            "width must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(2, "d")
+        self.assertEqual(
+            "height must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(2, None)
+        self.assertEqual(
+            "height must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(2, (2, ))
+        self.assertEqual(
+            "height must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(2, [2, 3])
+        self.assertEqual(
+            "height must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s2 = Rectangle(5, 7.6)
+        self.assertEqual(
+            "height must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(3, 4, "h")
+        self.assertEqual(
+            "x must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(1, 2, 2.6)
+        self.assertEqual(
+            "x must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(1, 2, 3, "r")
+        self.assertEqual(
+            "y must be an integer",
+            str(err.exception))
+        with self.assertRaises(TypeError) as err:
+            s1 = Rectangle(1, 2, 3, 4.5)
+        self.assertEqual(
+            "y must be an integer",
+            str(err.exception))
+        s1 = Rectangle(1, 2, 3, 4, "5")
+        self.assertEqual(s1.id, "5")
+        s2 = Rectangle(1, 2, 3, 4, False)
+        self.assertEqual(s2.id, False)
