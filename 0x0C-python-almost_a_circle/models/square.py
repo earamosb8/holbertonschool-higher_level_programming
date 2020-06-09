@@ -1,18 +1,21 @@
 #!/usr/bin/python3
+
 """Module for to models"""
+
 from models.rectangle import Rectangle
-"""This is module Rectangle."""
 
 
 class Square(Rectangle):
-    """This is module class base"""
+    """Square Class"""
 
     def __init__(self, size, x=0, y=0, id=None):
+        """constructor Class"""
         self.size = size
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
+        """Getter of size"""
         return (self.width)
 
     @size.setter
@@ -26,10 +29,12 @@ class Square(Rectangle):
         self.height = value
 
     def __str__(self):
+        """return s string"""
         return ("[Square] ({:d}) {:d}/{:d} - {:d}\
     ".format(self.id, self.x, self.y, self.width))
 
     def update(self, *args, **kwargs):
+        """update attributes"""
         l = len(args)
         if args and l > 0:
             for arg in args:
@@ -49,6 +54,7 @@ class Square(Rectangle):
                     setattr(self, key, value)
 
     def to_dictionary(self):
+        """Dictionary"""
         new_dictionary = {}
         for key, value in self.__dict__.items():
             if key.split("__")[-1] == "width" or key.split("\
