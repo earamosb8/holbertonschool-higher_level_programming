@@ -24,3 +24,9 @@ class Base:
         filename = cls.__name__ + ".json"
         with open(filename, "w") as my_file:
             my_file.write(cls.to_json_string(tmp_list))
+
+    @staticmethod
+    def from_json_string(json_string):
+        if json_string is None or json_string == []:
+            return ("[]")
+        return (json.loads(json_string))
