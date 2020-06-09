@@ -43,8 +43,10 @@ class Base:
     def from_json_string(json_string):
         """convert from json string"""
         if json_string is None or json_string == []:
-            return ("[]")
-        return (json.loads(json_string))
+            my_list = []
+        else:
+            my_list = json.loads(json_string)
+        return (my_list)
 
     @classmethod
     def create(cls, **dictionary):
