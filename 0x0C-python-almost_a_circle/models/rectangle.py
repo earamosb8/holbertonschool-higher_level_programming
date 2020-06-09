@@ -32,7 +32,7 @@ class Rectangle(Base):
         super().__init__(id)
 
     def __str__(self):
-        """return a string"""
+        """Return a string"""
         id = str(self.id)
         width = str(self.__width)
         height = str(self.__height)
