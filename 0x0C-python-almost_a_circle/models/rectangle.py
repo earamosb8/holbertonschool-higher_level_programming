@@ -33,8 +33,13 @@ class Rectangle(Base):
 
     def __str__(self):
         """return a string"""
-        return ("[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}\
-    ".format(self.id, self.x, self.y, self.width, self.height))
+        id = str(self.id)
+        width = str(self.__width)
+        height = str(self.__height)
+        x = str(self.__x)
+        y = str(self.__y)
+        return ("[Rectangle] ({:s}) {:s}/{:s} - {:s}/{:s}\
+    ".format(id, x, y, width, height))
 
     @property
     def width(self):
