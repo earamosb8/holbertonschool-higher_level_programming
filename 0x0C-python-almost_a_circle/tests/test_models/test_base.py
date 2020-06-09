@@ -9,6 +9,10 @@ from models.base import Base
 class TestBase(unittest.TestCase):
     """Base tests"""
 
+    def setUp(self):
+        """setup of unittest"""
+        Base._Base__nb_objects = 0
+
     def test_0(self):
         """Test number 0 for base"""
         b0 = Base()
