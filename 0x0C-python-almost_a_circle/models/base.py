@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import os
 """This is module class base"""
 
 
@@ -30,3 +31,24 @@ class Base:
         if json_string is None or json_string == []:
             return ("[]")
         return (json.loads(json_string))
+
+    @classmethod
+    def create(cls, **dictionary):
+        if (cls.__name__ == "Square"):
+            dummy = cls(3)
+        elif (cls.__name__ == "Rectangle"):
+            dummy = cls(3, 3)
+        dummy.update(**dictionary)
+        return(dummy)
+
+    @classmethod
+    def load_from_file(cls):
+        instance_list = []
+        filename = cls.__name__ + ".json"
+        if not os.path.isfile(filename):
+            return (instance_list)
+        with open(filename) as my_file:
+            my_data = cls.from_json_string(my_file.read())
+            for instance in my_data:
+                instance_list.append(cls.create(**instance))
+        return (instance_list)
