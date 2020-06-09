@@ -62,8 +62,8 @@ class Square(Rectangle):
         """Dictionary"""
         new_dictionary = {}
         for key, value in self.__dict__.items():
-            if key.split("__")[-1] == "width" or key.split("\
-    __")[-1] == "height":
+            k = key.split("__")[-1]
+            if k == "width" or k == "height":
                 new_dictionary["size"] = value
             else:
                 new_dictionary[key.split("__")[-1]] = value
