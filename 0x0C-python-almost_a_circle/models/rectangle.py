@@ -38,8 +38,9 @@ class Rectangle(Base):
         height = str(self.__height)
         x = str(self.__x)
         y = str(self.__y)
-        return ("[Rectangle] ({:s}) {:s}/{:s} - {:s}/{:s}\
-    ".format(id, x, y, width, height))
+        string = "[Rectangle] (" + id + ") " + x + "/" + y + " - "\
+            + width + "/" + height
+        return string
 
     @property
     def width(self):
