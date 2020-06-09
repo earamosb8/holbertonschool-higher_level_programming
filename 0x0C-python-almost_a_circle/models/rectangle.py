@@ -1,13 +1,14 @@
 #!/usr/bin/python3
+
 """Module for to models"""
+
 from models.base import Base
-"""This is module Rectangle."""
 
 
 class Rectangle(Base):
-    """This is module class base"""
-
+    """Rectangle Class"""
     def __init__(self, width, height, x=0, y=0, id=None):
+        """constructor Class"""
         if type(width) != int:
             raise TypeError("width must be an integer")
         if width <= 0:
@@ -31,15 +32,18 @@ class Rectangle(Base):
         super().__init__(id)
 
     def __str__(self):
+        """return a string"""
         return ("[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}\
     ".format(self.id, self.__x, self.__y, self.__width, self.__height))
 
     @property
     def width(self):
+        """Getter of width"""
         return (self.__width)
 
     @width.setter
     def width(self, width):
+        """Setter of width"""
         if type(width) != int:
             raise TypeError("width must be an integer")
         if width <= 0:
@@ -48,10 +52,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """Getter of height"""
         return (self.__height)
 
     @height.setter
     def height(self, height):
+        """Setter of height"""
         if type(height) != int:
             raise TypeError("height must be an integer")
         if height <= 0:
@@ -60,10 +66,12 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """Getter of x"""
         return (self.__x)
 
     @x.setter
     def x(self, x):
+        """Setter of x"""
         if type(x) != int:
             raise TypeError("x must be an integer")
         if x < 0:
@@ -72,10 +80,12 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """Getter of y"""
         return (self.__y)
 
     @y.setter
     def y(self, y):
+        """Setter of y"""
         if type(y) != int:
             raise TypeError("y must be an integer")
         if y < 0:
@@ -83,9 +93,13 @@ class Rectangle(Base):
         self.__y = y
 
     def area(self):
+        """Calculate area"""
         return (self.__width * self.__height)
 
     def display(self):
+        """
+        Print the square checking position
+        """
         for ejey in range(0, self.__y):
             print("")
         for q in range(0, self.__height):
@@ -96,6 +110,7 @@ class Rectangle(Base):
             print("")
 
     def update(self, *args, **kwargs):
+        """update attributes"""
         l = len(args)
         if args and l > 0:
             for arg in args:
@@ -117,6 +132,7 @@ class Rectangle(Base):
                     setattr(self, key, value)
 
     def to_dictionary(self):
+        """Dictionary"""
         new_dictionary = {}
         for key, value in self.__dict__.items():
             new_dictionary[key.split("__")[-1]] = value
