@@ -1,25 +1,22 @@
 #!/usr/bin/python3
-"""
-Unittests - Square class
-"""
-
-import io
-import unittest
-import sys
+"""tests - Square class"""
 from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
+import io
+import unittest
+import sys
 import os
 
 
 class TestSquare(unittest.TestCase):
     """Test square"""
     def setUp(self):
-        """steup of unittes"""
+        """setup of unittes"""
         Base._Base__nb_objects = 0
 
     def tearDown(self):
-        """deleting files if exist"""
+        """deleting files"""
         if os.path.exists("Base.json"):
             os.remove("Base.json")
         if os.path.exists("Rectangle.json"):
@@ -28,7 +25,7 @@ class TestSquare(unittest.TestCase):
             os.remove("Square.json")
 
     def test_0(self):
-        """Test - checking attributes"""
+        """checking attributes"""
         s1 = Square(8)
         self.assertEqual(s1.id, 1)
         self.assertEqual(s1.width, 8)
@@ -49,7 +46,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s3.y, 5)
 
     def test_1(self):
-        """Test - non integer value"""
+        """integer value"""
         with self.assertRaises(TypeError) as err:
             s1 = Square(None)
         self.assertEqual(
@@ -96,7 +93,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s2.id, False)
 
     def test_2(self):
-        """Test void arguments"""
+        """void arguments"""
         with self.assertRaises(TypeError) as err:
             s = Square()
         self.assertEqual(
@@ -104,7 +101,7 @@ class TestSquare(unittest.TestCase):
             str(err.exception))
 
     def test_3(self):
-        """Test - negative int"""
+        """negative int"""
         with self.assertRaises(ValueError) as err:
             s1 = Square(-1)
         self.assertEqual(
@@ -124,7 +121,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.id, -5)
 
     def test_4(self):
-        """Test - zero values"""
+        """zero values"""
         s1 = Square(2, 0, 0, 0)
         self.assertEqual(s1.x, 0)
         self.assertEqual(s1.y, 0)
@@ -137,7 +134,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.x, 0)
 
     def test_5(self):
-        """Test - Areas"""
+        """Areas"""
         s1 = Square(2)
         self.assertEqual(s1.area(), 4)
         s1 = Square(3, 3)
@@ -148,7 +145,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.area(), 25)
 
     def test_6(self):
-        """Test - str"""
+        """str"""
         s1 = Square(2)
         self.assertEqual(s1.__str__(), "[Square] (1) 0/0 - 2")
         s1 = Square(3, 3)
@@ -159,7 +156,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Square] (7) 3/6 - 5")
 
     def test_7(self):
-        """Test - Update"""
+        """Update"""
         s1 = Square(2)
         self.assertEqual(s1.__str__(), "[Square] (1) 0/0 - 2")
         s1.update(3)
@@ -172,7 +169,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Square] (3) 6/7 - 4")
 
     def test_8(self):
-        """Test - Update with names"""
+        """Update with names"""
         s1 = Square(2)
         self.assertEqual(s1.__str__(), "[Square] (1) 0/0 - 2")
         s1.update(id=3)
@@ -187,13 +184,13 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Square] (3) 6/7 - 4")
 
     def test_9(self):
-        """Test - unknowm attribute"""
+        """unknowm attribute"""
         s1 = Square(2)
         s1.update(hi=3)
         self.assertEqual(hasattr(s1, 'hi'), False)
 
     def test_10(self):
-        """Test mod atribute by assignment"""
+        """mod atribute by assignment"""
         s1 = Square(12)
         self.assertEqual(s1.size, 12)
         s1.size = 25
@@ -230,7 +227,7 @@ class TestSquare(unittest.TestCase):
             str(err.exception))
 
     def test_11(self):
-        """Test 16 to_dictionary method"""
+        """to_dictionary method"""
         s1 = Square(4)
         s_dict = {'x': 0, 'size': 4, 'y': 0, 'id': 1}
         self.assertDictEqual(s1.to_dictionary(), s_dict)
@@ -249,7 +246,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s4.to_dictionary() is s_dict, False)
 
     def test_12(self):
-        """Test - to_json_string"""
+        """to_json_string"""
         s1 = Square(2, 6, 2)
         dictionary = s1.to_dictionary()
         json_d = Base.to_json_string([dictionary])
@@ -257,7 +254,7 @@ class TestSquare(unittest.TestCase):
         self.assertDictEqual(dictionary, {'id': 1, 'x': 6, 'y': 2, 'size': 2})
 
     def test_13(self):
-        """Test - save_to_file method"""
+        """save_to_file method"""
         s1 = Square(2, 6, 2)
         s2 = Square(2, 4, 3, 6)
         Square.save_to_file([s1, s2])
@@ -267,7 +264,7 @@ class TestSquare(unittest.TestCase):
             self.assertEqual(len(file.read()), len(res))
 
     def test_14(self):
-        """Test - save_to_file - load_from_file method"""
+        """save_to_file - load_from_file method"""
         s1 = Square(2, 6, 2)
         Square.save_to_file([s1])
         datafromfile = Square.load_from_file()
@@ -280,7 +277,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(string, "[Square] (1) 6/2 - 2")
 
     def test_15(self):
-        """Test 20 load void"""
+        """ load void"""
         sl = Square.load_from_file()
         self.assertEqual(sl, [])
 
@@ -293,19 +290,19 @@ class TestSquare(unittest.TestCase):
         self.assertEqual((s1 is s2), False)
 
     def test_17(self):
-        """Test - save_to_file None"""
+        """save_to_file None"""
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
     def test_18(self):
-        """Test - save_to_file []"""
+        """save_to_file []"""
         Square.save_to_file([])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), '[]')
 
     def test_19(self):
-        """Test compare instances"""
+        """compare instances"""
         s1 = Square(1, 2)
         self.assertIsInstance(s1, Base)
         self.assertIsInstance(s1, Square)

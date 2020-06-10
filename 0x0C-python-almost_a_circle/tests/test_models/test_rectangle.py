@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""
-Unittests - Rectangle class
-"""
+"""tests - Rectangle class"""
+
+
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -21,7 +21,7 @@ class TestRectangle(unittest.TestCase):
         Base._Base__nb_objects = 0
 
     def tearDown(self):
-        """delete existing files"""
+        """delete files"""
         if os.path.exists("Base.json"):
             os.remove("Base.json")
         if os.path.exists("Rectangle.json"):
@@ -30,7 +30,7 @@ class TestRectangle(unittest.TestCase):
             os.remove("Square.json")
 
     def test_0(self):
-        """Test - checking attributes"""
+        """check attributes"""
         s1 = Rectangle(3, 2)
         self.assertEqual(s1.id, 1)
         self.assertEqual(s1.width, 3)
@@ -45,7 +45,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s2.y, 0)
 
     def test_1(self):
-        """check if is integer value"""
+        """check--- integer value"""
         with self.assertRaises(TypeError) as err:
             s1 = Rectangle(None, 3)
         self.assertEqual(
@@ -122,7 +122,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s2.id, False)
 
     def test_2(self):
-        """Test one argument"""
+        """ one argument"""
         with self.assertRaises(TypeError) as err:
             s = Rectangle(2)
         self.assertEqual(
@@ -130,7 +130,7 @@ class TestRectangle(unittest.TestCase):
             str(err.exception))
 
     def test_3(self):
-        """Test - negative int"""
+        """negative int"""
         with self.assertRaises(ValueError) as err:
             s1 = Rectangle(-3, -1)
         self.assertEqual(
@@ -155,7 +155,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1.id, -3)
 
     def test_4(self):
-        """Test - zero values"""
+        """zero values"""
         s1 = Rectangle(2, 1, 0, 0, 6)
         self.assertEqual(s1.x, 0)
         self.assertEqual(s1.y, 0)
@@ -172,7 +172,7 @@ class TestRectangle(unittest.TestCase):
             str(err.exception))
 
     def test_5(self):
-        """Test - Areas"""
+        """Areas"""
         s1 = Rectangle(3, 6)
         self.assertEqual(s1.area(), 18)
         s1 = Rectangle(3, 3)
@@ -183,7 +183,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1.area(), 25)
 
     def test_6(self):
-        """Test - str"""
+        """str"""
         s1 = Rectangle(3, 3)
         self.assertEqual(s1.__str__(), "[Rectangle] (1) 0/0 - 3/3")
         s1 = Rectangle(4, 4, 6)
@@ -194,7 +194,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Rectangle] (9) 6/7 - 5/3")
 
     def test_7(self):
-        """Test - Update"""
+        """Update"""
         s1 = Rectangle(2, 2)
         self.assertEqual(s1.__str__(), "[Rectangle] (1) 0/0 - 2/2")
         s1.update(3, 3)
@@ -207,7 +207,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Rectangle] (3) 5/9 - 3/4")
 
     def test_8(self):
-        """Test - Update with names"""
+        """Update with names"""
         s1 = Rectangle(2, 3)
         self.assertEqual(s1.__str__(), "[Rectangle] (1) 0/0 - 2/3")
         s1.update(id=3)
@@ -222,13 +222,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Rectangle] (3) 6/7 - 5/3")
 
     def test_9(self):
-        """Test - unknowm attribute"""
+        """unknowm attribute"""
         s1 = Rectangle(2, 5)
         s1.update(hi=3)
         self.assertEqual(hasattr(s1, 'hi'), False)
 
     def test_10(self):
-        """Test mod atribute by assignment"""
+        """mod atribute by assignment"""
         s1 = Rectangle(12, 4)
         self.assertEqual(s1.width, 12)
         s1.width = 25
@@ -347,7 +347,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(s4.to_dictionary() is s_dict, False)
 
     def test_12(self):
-        """Test - to_json_string"""
+        """to_json_string"""
         s1 = Rectangle(2, 6, 2)
         dictionary = s1.to_dictionary()
         json_d = Base.to_json_string([dictionary])
@@ -356,7 +356,7 @@ class TestRectangle(unittest.TestCase):
             dictionary, {'id': 1, 'x': 2, 'y': 0, 'width': 2, 'height': 6})
 
     def test_13(self):
-        """Test - save_to_file method"""
+        """save_to_file method"""
         s1 = Rectangle(2, 6, 2)
         s2 = Rectangle(2, 4, 3, 6)
         Rectangle.save_to_file([s1, s2])
@@ -366,7 +366,7 @@ class TestRectangle(unittest.TestCase):
             self.assertEqual(len(file.read()), len(res))
 
     def test_14(self):
-        """Test - save_to_file - load_from_file method"""
+        """save_to_file - load_from_file method"""
         s1 = Rectangle(2, 6, 2, 8)
         Rectangle.save_to_file([s1])
         datafromfile = Rectangle.load_from_file()
@@ -379,12 +379,12 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(string, "[Rectangle] (1) 2/8 - 2/6")
 
     def test_15(self):
-        """Test 20 load void"""
-        sl = Rectangle.load_from_file()
-        self.assertEqual(sl, [])
+        """20- load void"""
+        s = Rectangle.load_from_file()
+        self.assertEqual(s, [])
 
     def test_16(self):
-        """Test """
+        """Test"""
         s1 = Rectangle(1, 25, 34, 7)
         s1_dict = s1.to_dictionary()
         s2 = Rectangle.create(**s1_dict)
@@ -392,25 +392,25 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual((s1 is s2), False)
 
     def test_17(self):
-        """Test - save_to_file None"""
+        """save_to_file None"""
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
     def test_18(self):
-        """Test - save_to_file []"""
+        """save_to_file []"""
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), '[]')
 
     def test_19(self):
-        """test - display method"""
-        Rec8 = Rectangle(3, 3)
+        """display method"""
+        Rec8 = Rectangle(5, 5)
         printed_stream = StringIO()
         sys.stdout = printed_stream
         Rec8.display()
         sys.stdout = sys.__stdout__
-        self.assertEqual(printed_stream.getvalue(), "###\n###\n###\n")
+        self.assertEqual(printed_stream.getvalue(), "#####\n#####\n#####\n#####\n#####\n")
         Rec9 = Rectangle(3, 3, 1, 1)
         printed_stream2 = StringIO()
         sys.stdout = printed_stream2
