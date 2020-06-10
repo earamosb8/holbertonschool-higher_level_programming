@@ -402,3 +402,18 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), '[]')
+
+    def test_19(self):
+        """test - display method"""
+        Rec8 = Rectangle(3, 3)
+        printed_stream = StringIO()
+        sys.stdout = printed_stream
+        Rec8.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(printed_stream.getvalue(), "###\n###\n###\n")
+        Rec9 = Rectangle(3, 3, 1, 1)
+        printed_stream2 = StringIO()
+        sys.stdout = printed_stream2
+        Rec9.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(printed_stream2.getvalue(), "\n ###\n ###\n ###\n")
