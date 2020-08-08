@@ -15,7 +15,7 @@ if __name__ == "__main__":
                            password=password, db=dbname)
     cur = conn.cursor()
     cur.execute("SELECT * FROM states WHERE name='{}'\
-                ORDER BY id ASC".format(search))
+                ORDER BY states.id ASC".format(search))
     rows = cur.fetchall()
     for x in rows:
         print(x)
