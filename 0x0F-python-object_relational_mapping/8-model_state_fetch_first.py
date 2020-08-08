@@ -15,7 +15,7 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = sessionmaker(engine)()
-    state = session.query(State).order_by(State.id).first()
+    state = session.query(State).first()
     if state is None:
         print("Nothing")
     else:
