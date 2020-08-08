@@ -4,9 +4,8 @@
 import MySQLdb
 from sys import argv
 
+if __name__ == "__main__":
 
-def select():
-    """lists all states from the database"""
     username = argv[1]
     password = argv[2]
     dbname = argv[3]
@@ -20,5 +19,3 @@ def select():
         print(x)
     cursor.close()
     conn.close()
-if __name__ == "__main__":
-    select()
