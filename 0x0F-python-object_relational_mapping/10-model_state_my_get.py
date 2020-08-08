@@ -11,7 +11,7 @@ if __name__ == '__main__':
     password = sys.argv[2]
     database = sys.argv[3]
     namest = sys.argv[4]
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost::3306/{}'
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(username, password, database),
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
@@ -21,4 +21,5 @@ if __name__ == '__main__':
         print(states.id)
     else:
         print("Not Found")
+
     session.close()
