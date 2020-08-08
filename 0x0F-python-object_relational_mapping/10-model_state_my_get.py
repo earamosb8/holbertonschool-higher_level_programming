@@ -10,13 +10,12 @@ if __name__ == '__main__':
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    namestate = sys.argv[4]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(username, password, database),
                            pool_pre_ping=True)
     Base.metadata.create_all(engine)
     session = sessionmaker(engine)()
-    states = session.query(State).filter_by(name=namestate).first()
+    states = session.query(State).filter_by(name=sys.argv[4]).first()
     if states:
         print("{}".format(states.id))
     else:
