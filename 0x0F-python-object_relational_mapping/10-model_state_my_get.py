@@ -16,12 +16,12 @@ if __name__ == '__main__':
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
 
-    s = sessionmaker(bind=engine)()
+    session = sessionmaker(bind=engine)()
 
-    _query = s.query(State).filter(State.name == STATE).first()
+    _query = session.query(State).filter(State.name == STATE).first()
     if _query:
         print(_query.id)
     else:
         print('Not found')
 
-    s.close()
+    session.close()
