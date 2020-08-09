@@ -14,12 +14,11 @@ if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(username, password, database),
                            pool_pre_ping=True)
-    Session = sessionmaker(engine)
-    session = Session()
-    states = session.query(State).filter(State.name == statename).first()
-    if states:
-        print(states.id)
+    session = sessionmaker(bind=engine)()
+    sts = session.query(State).filter(State.name == statename).first()
+    if sts:
+        print(sts.id)
     else:
-        print("Not Found")
+        print('Not Found')
 
     session.close()
