@@ -6,10 +6,9 @@ the body of the response.
 import requests
 from os import sys
 
-if __name__ == "__main__":
-    request = requests.get(url)
-    url = sys.argv[1]
-    if request.status_code >= 400:
-        print("Error code: {}".format(request.status_code))
+if __name__ == '__main__':
+    response = requests.get(sys.argv[1])
+    if response.status_code >= 400:
+        print("Error code: {}".format(response.status_code))
     else:
-        print(request.text)
+        print(response.text)
