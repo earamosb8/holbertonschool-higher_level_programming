@@ -9,7 +9,7 @@ from os import sys
 if __name__ == "__main__":
     request = requests.get(url)
     url = sys.argv[1]
-    if response.status_code >= 400:
+    if request.status_code >= 400:
         print("Error code: {}".format(response.status_code))
     else:
-        print(response.text)
+        print(request.text)
