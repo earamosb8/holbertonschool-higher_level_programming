@@ -8,5 +8,7 @@ if (process.argv.length === 2) {
     for (let i = 0; i < process.argv[2]; i++) {
       console.log('X'.repeat(num));
     }
+  } else {
+    console.log('Missing size');
   }
 }
