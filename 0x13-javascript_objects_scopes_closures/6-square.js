@@ -1,6 +1,5 @@
 #!/usr/bin/node
 // other Square class that inhererit from Square:
-// charPrint prints a square
 const SquareOne = require('./5-Square');
 
 module.exports = class Square extends SquareOne {
