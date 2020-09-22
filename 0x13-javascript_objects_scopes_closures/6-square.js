@@ -1,11 +1,12 @@
 #!/usr/bin/node
-// other Square class that inherit from Square:::
+// Square class that inhererit from Rectangle
+// charPrint method that print the Square
 
-const squareOne = require('./5-Square');
+const Squaredad = require('./5-square');
 
-module.exports = class Square extends squareOne {
+module.exports = class Square extends Squaredad {
   charPrint (c = 'X') {
-    for (let i = 1; i <= this.height; i++) {
+    for (let i = 0; i < this.height; i++) {
       console.log(c.repeat(this.width));
     }
   }
