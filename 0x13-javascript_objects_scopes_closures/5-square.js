@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Square class that inhererit from Rectangle::
+// Square class that inhererit from Rectangle:::
 
 const Rectangle = require('./4-rectangle');
 
