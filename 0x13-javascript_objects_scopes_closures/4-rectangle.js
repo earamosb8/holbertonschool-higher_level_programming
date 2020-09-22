@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// class rectangle with print() function to print the rectangle
+// class rectangle with print() function to print the rectangle:
 module.exports = class Rectangle {
   constructor (w, h) {
     if (w > 0 && h > 0) {
