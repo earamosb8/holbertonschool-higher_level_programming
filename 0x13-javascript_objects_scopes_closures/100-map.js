@@ -6,4 +6,3 @@ const thelist = list.map((element, index) => {
 });
 console.log(list);
 console.log(thelist);
-
