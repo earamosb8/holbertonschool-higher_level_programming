@@ -62,5 +62,5 @@ This repository contains projects made with Python and javascript language. The 
 
 
 
-## Author :
+## Author:pencil:
 **Eduardo Ramos** - twitter [@eduar880620](https://twitter.com/eduar880620) - LinkedIn [Eduardo Ramos](https://www.linkedin.com/in/earamosb8)
